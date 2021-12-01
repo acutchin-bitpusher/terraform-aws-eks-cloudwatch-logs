@@ -28,17 +28,19 @@ resource "helm_release" "cloudwatch_logs" {
     value = var.log_group_name != null ? var.log_group_name : "/aws/eks/${var.cluster_name}/$(kubernetes['labels']['app'])"
   }
 
-#  set {
-#    name  = "cloudWatch.logStreamName"
-#    #value = "$(tag[0]).$(ident)"
-#    value = "$(tag[1])"
-#  }
-
   set {
-    name  = "cloudWatch.logStreamPrefix"
-    #value = "logstreamprefixwoohoo"
-    value = "ls-"
+    name  = "cloudWatch.logStreamName"
+    #value = "$(tag[0]).$(ident)"
+    #value = "$(tag[1])"
+    #value = var.log_stream_name != null ? var.log_stream_name : "$(tag[0]).$(ident)"
+    value = var.log_stream_name != null ? var.log_stream_name : "$(tag[0]).$(ident)"
   }
+
+#  set {
+#    name  = "cloudWatch.logStreamPrefix"
+#    #value = "logstreamprefixwoohoo"
+#    value = "ls-"
+#  }
 
   set {
     name  = "firehose.enabled"
