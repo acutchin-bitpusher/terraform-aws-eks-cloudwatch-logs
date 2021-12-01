@@ -28,10 +28,15 @@ resource "helm_release" "cloudwatch_logs" {
     value = var.log_group_name != null ? var.log_group_name : "/aws/eks/${var.cluster_name}/$(kubernetes['labels']['app'])"
   }
 
+#  set {
+#    name  = "cloudWatch.logStreamName"
+#    #value = "$(tag[0]).$(ident)"
+#    value = "$(tag[1])"
+#  }
+
   set {
-    name  = "cloudWatch.logStreamName"
-    #value = "$(tag[0]).$(ident)"
-    value = "$(tag[1])"
+    name  = "cloudWatch.logStreamPrefix"
+    value = "logstreamprefixwoohoo"
   }
 
   set {
