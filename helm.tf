@@ -29,6 +29,11 @@ resource "helm_release" "cloudwatch_logs" {
   }
 
   set {
+    name  = "cloudWatch.logStreamName"
+    value = "$(tag[0]).$(ident)"
+  }
+
+  set {
     name  = "firehose.enabled"
     value = var.firehose_enabled
   }
