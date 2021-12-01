@@ -36,7 +36,8 @@ resource "helm_release" "cloudwatch_logs" {
 
   set {
     name  = "cloudWatch.logStreamPrefix"
-    value = "logstreamprefixwoohoo"
+    #value = "logstreamprefixwoohoo"
+    value = ""
   }
 
   set {
