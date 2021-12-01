@@ -98,3 +98,8 @@ variable "settings" {
   default     = {}
   description = "Additional settings which will be passed to the Helm chart values."
 }
+
+variable "log_group_name" {
+  type = string
+  default = null
+}

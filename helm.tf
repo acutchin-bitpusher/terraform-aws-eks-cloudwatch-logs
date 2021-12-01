@@ -25,7 +25,7 @@ resource "helm_release" "cloudwatch_logs" {
   set {
     name  = "cloudWatch.logGroupName"
     #value = "/aws/eks/${var.cluster_name}/$(kubernetes['labels']['app'])"
-    value = var.log_group_name
+    value = var.log_group_name != null ? var.log_group_name : "/aws/eks/${var.cluster_name}/$(kubernetes['labels']['app'])"
   }
 
   set {
