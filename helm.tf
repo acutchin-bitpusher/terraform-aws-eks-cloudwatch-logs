@@ -30,7 +30,8 @@ resource "helm_release" "cloudwatch_logs" {
 
   set {
     name  = "cloudWatch.logStreamName"
-    value = "$(tag[0]).$(ident)"
+    #value = "$(tag[0]).$(ident)"
+    value = "$(tag[1])"
   }
 
   set {
